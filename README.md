@@ -49,7 +49,7 @@ Default i2c-address is 0x50.
 # API
 
 // Open device   
-int eeprom_open(char *dev_fqn, int i2c_addr, int type, int delay, struct eeprom*);   
+int eeprom_open(char *dev_fqn, int i2c_addr, int bits, int delay, struct eeprom*);   
 
 // Get EEPROM memory size   
 __u16 getEEPROMbytes(struct eeprom* e);
