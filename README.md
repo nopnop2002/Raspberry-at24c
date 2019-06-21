@@ -3,7 +3,7 @@
 Two-Wire Serial EEPROM Access Library for RaspberryPi.   
 
 I forked from here.   
-https://www.richud.com/wiki/Rasberry_Pi_I2C_EEPROM_Program
+https://www.richud.com/wiki/Rasberry_Pi_I2C_EEPROM_Program   
 eeprog-0.7.6-tear5.tar.gz
 
 ---
