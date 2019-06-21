@@ -137,7 +137,7 @@ int eeprom_open(char *dev_fqn, int i2c_addr, int bits, int write_cycle_time, str
 	if (bits > 16) e->type = EEPROM_TYPE_16BIT_ADDR;
 	e->bytes = 128 * bits;
 	e->write_cycle_time = write_cycle_time;
-	printf("bits=%d bytes=%d type=%d\n",e->bits, e->bytes, e->type);
+	//printf("bits=%d bytes=%d type=%d\n",e->bits, e->bytes, e->type);
 	return 0;
 }
 
