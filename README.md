@@ -60,4 +60,9 @@ int eeprom_read_byte(struct eeprom* e, __u16 mem_addr);
 // Write data to EEPROM   
 int eeprom_write_byte(struct eeprom *e, __u16 mem_addr, __u8 data);
 
+---
+
+# Wireing
+
+![24cxx](https://user-images.githubusercontent.com/6020549/59955416-fd8eb600-94c4-11e9-87f8-246db2913a04.jpg)
 
