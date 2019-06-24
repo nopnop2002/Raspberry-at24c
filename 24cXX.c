@@ -1,14 +1,4 @@
 /***************************************************************************
-    copyright            : (C) by 2003-2004 Stefano Barbato
-    email                : stefano@codesink.org
-
-    Copyright (C) 2011 by Kris Rusocki <kszysiu@gmail.com>
-    - support for user-defined write cycle time
-
-    $Id: 24cXX.c,v 1.5 2004/02/29 11:05:28 tat Exp $
- ***************************************************************************/
-
-/***************************************************************************
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -91,7 +81,6 @@ static int i2c_write_3b(struct eeprom *e, __s8 i2c_addr, __u8 buf[3])
 		exit(1); } \
 	} while(0);
 
-//int eeprom_open(char *dev_fqn, int i2c_addr, int type, int write_cycle_time, struct eeprom* e)
 int eeprom_open(char *dev_fqn, int i2c_addr, int bits, int write_cycle_time, struct eeprom* e)
 {
 	int funcs, fd, r;
@@ -150,33 +139,6 @@ int eeprom_close(struct eeprom *e)
 	return 0;
 }
 
-#if 0
-int eeprom_24c32_write_byte(struct eeprom *e, __u16 mem_addr, __u8 data)
-{
-	__u8 buf[3] = { (mem_addr >> 8) & 0x00ff, mem_addr & 0x00ff, data };
-	return i2c_write_3b(e, buf);
-}
-
-
-int eeprom_24c32_read_current_byte(struct eeprom* e)
-{
-	ioctl(e->fd, BLKFLSBUF); // clear kernel read buffer
-	return i2c_smbus_read_byte(e->fd);
-}
-
-int eeprom_24c32_read_byte(struct eeprom* e, __u16 mem_addr)
-{
-	int r;
-	ioctl(e->fd, BLKFLSBUF); // clear kernel read buffer
-	__u8 buf[2] = { (mem_addr >> 8) & 0x0ff, mem_addr & 0x0ff };
-	r = i2c_write_2b(e, buf);
-	if (r < 0)
-		return r;
-	r = i2c_smbus_read_byte(e->fd);
-	return r;
-}
-#endif
-
 __u16 getEEPROMbytes(struct eeprom* e)
 {
 	return(e->bytes);
@@ -205,7 +167,6 @@ int eeprom_read_byte(struct eeprom* e, __u16 mem_addr)
 		__s8 i2c_addr = e->i2c_addr + blockNumber;
 		__u8 buf =  _mem_addr;
 		//printf("read_byte mem_addr=%x i2c_addr=%x _mem_addr=%x\n",mem_addr, i2c_addr, _mem_addr);
-		
 		r = i2c_write_1b(e, i2c_addr, buf);
 	} else if(e->type == EEPROM_TYPE_16BIT_ADDR) {
 		__s8 i2c_addr = e->i2c_addr;

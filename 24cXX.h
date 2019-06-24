@@ -1,14 +1,4 @@
 /***************************************************************************
-    copyright            : (C) by 2003-2004 Stefano Barbato
-    email                : stefano@codesink.org
-
-    Copyright (C) 2011 by Kris Rusocki <kszysiu@gmail.com>
-    - support for user-defined write cycle time
-
-    $Id: 24cXX.h,v 1.6 2004/02/29 11:05:28 tat Exp $
- ***************************************************************************/
-
-/***************************************************************************
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -26,20 +16,22 @@
 
 struct eeprom
 {
-	char *dev; 	// device file i.e. /dev/i2c-N
+	char *dev;	// device file i.e. /dev/i2c-N
 	int i2c_addr;	// i2c address
 	int fd;		// file descriptor
-	int type; 	// eeprom register size(8bit/16bit)
+	int type;	// eeprom register size(8bit/16bit)
 	int write_cycle_time;
 	int bits;	// eeprom memory size(Kbits)
 	__u16 bytes;	// eeprom memory size(byte)
 };
 
 /*
- * opens the eeprom device at [dev_fqn] (i.e. /dev/i2c-N) whose address is
- * [addr] and set the eeprom_24c32 [e]
+ * opens the eeprom device at [dev_fqn] (i.e. /dev/i2c-N)
+ * whose address is [i2c_addr]
+ * number of bits is [bits]
+ * and set the eeprom [e]
  */
-int eeprom_open(char *dev_fqn, int i2c_addr, int type, int delay, struct eeprom*);
+int eeprom_open(char *dev_fqn, int i2c_addr, int bits, int delay, struct eeprom*);
 /*
  * closees the eeprom device [e] 
  */

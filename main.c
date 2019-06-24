@@ -21,7 +21,6 @@
 #include <stdlib.h>
 #include <errno.h>
 #include <string.h>
-#include <sys/types.h>
 #include <sys/stat.h>
 
 #include "24cXX.h"
@@ -136,7 +135,7 @@ int main(int argc, char *argv[])
   printf("eeprom_open ret=%d\n",ret);
 
   // get EEPROM size(byte)
-  __u16 eeprom_bytes = getEEPROMbytes(&e);
+  uint16_t eeprom_bytes = getEEPROMbytes(&e);
   printf("EEPROM chip=24C%.02d bytes=%dByte\n",eeprom_bits,eeprom_bytes);
 
   uint16_t mem_addr;
