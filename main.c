@@ -151,6 +151,14 @@ int main(int argc, char *argv[])
     if (ret != 0) printf("eeprom_write_byte ret=%d\n",ret);
   }
 
+  // write last blcok
+  for(i=0;i<256;i++) {
+    mem_addr = i + (eeprom_bytes - 0x100);
+    data = 255 - i;
+    ret = eeprom_write_byte(&e, mem_addr, data);
+    if (ret != 0) printf("eeprom_write_byte ret=%d\n",ret);
+  }
+
   // read first blcok
   memset(rdata, 0, sizeof(rdata));
   for(i=0;i<256;i++) {
@@ -163,14 +171,6 @@ int main(int argc, char *argv[])
 
   char title[64];
   sprintf(title,"address %d-%d",eeprom_bytes-0x100,eeprom_bytes-1);
-
-  // write last blcok
-  for(i=0;i<256;i++) {
-    mem_addr = i + (eeprom_bytes - 0x100);
-    data = 255 - i;
-    ret = eeprom_write_byte(&e, mem_addr, data);
-    if (ret != 0) printf("eeprom_write_byte ret=%d\n",ret);
-  }
 
   // read last blcok
   memset(rdata, 0, sizeof(rdata));
