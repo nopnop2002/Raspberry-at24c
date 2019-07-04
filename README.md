@@ -39,11 +39,14 @@ cc -o main main.c 24cXX.c -DC512
 sudo ./main [i2c-address]   
 Default i2c-address is 0x50.   
 
+24C04 with Orange Pi   
+![24cxx-orangepi](https://user-images.githubusercontent.com/6020549/59955202-e0a5b300-94c3-11e9-97c5-d980e950d726.jpg)
+
 24C64 with Raspberry Pi   
 ![24cxx-raspberry](https://user-images.githubusercontent.com/6020549/59955201-e0a5b300-94c3-11e9-96a0-36d694c5dec9.jpg)
 
-24C04 with Orange Pi   
-![24cxx-orangepi](https://user-images.githubusercontent.com/6020549/59955202-e0a5b300-94c3-11e9-97c5-d980e950d726.jpg)
+24C256 with Raspberry Pi   
+![24C256-raspberry](https://user-images.githubusercontent.com/6020549/60672424-432d8480-9eb0-11e9-8b6b-9c3447d560e2.jpg)
 
 ---
 
