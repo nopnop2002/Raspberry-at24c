@@ -47,6 +47,9 @@ Default i2c-address is 0x50.
 24C16 with Orange Pi   
 ![24C16-orangepi](https://user-images.githubusercontent.com/6020549/60673747-71609380-9eb3-11e9-9982-c2bf93e6ac98.jpg)
 
+24C32 with Orange Pi   
+![24C32-orangepi](https://user-images.githubusercontent.com/6020549/60674822-f482e900-9eb5-11e9-94c5-999c12bbe407.jpg)
+
 24C64 with Raspberry Pi   
 ![24cxx-raspberry](https://user-images.githubusercontent.com/6020549/59955201-e0a5b300-94c3-11e9-96a0-36d694c5dec9.jpg)
 
