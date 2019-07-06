@@ -53,6 +53,9 @@ Default i2c-address is 0x50.
 24C64 with Raspberry Pi   
 ![24cxx-raspberry](https://user-images.githubusercontent.com/6020549/59955201-e0a5b300-94c3-11e9-96a0-36d694c5dec9.jpg)
 
+24C128 with Raspberry Pi   
+![24C128-raspberry](https://user-images.githubusercontent.com/6020549/60750005-4ffbc680-9fdd-11e9-8f18-6cc7d55452d1.jpg)
+
 24C256 with Raspberry Pi   
 ![24C256-raspberry](https://user-images.githubusercontent.com/6020549/60672424-432d8480-9eb0-11e9-8b6b-9c3447d560e2.jpg)
 
