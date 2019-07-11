@@ -2,8 +2,7 @@
 
 Two-Wire Serial EEPROM Access Library for RaspberryPi.   
 
-I forked from here.   
-https://www.richud.com/wiki/Rasberry_Pi_I2C_EEPROM_Program   
+I forked from [here](https://www.richud.com/wiki/Rasberry_Pi_I2C_EEPROM_Program)   
 eeprog-0.7.6-tear5.tar.gz
 
 ---
@@ -63,17 +62,19 @@ Default i2c-address is 0x50.
 
 # API
 
-// Open device   
-int eeprom_open(char *dev_fqn, int i2c_addr, int bits, int delay, struct eeprom*);   
+```
+// Open device
+int eeprom_open(char *dev_fqn, int i2c_addr, int bits, int delay, struct eeprom*);
 
-// Get EEPROM memory size   
+// Get EEPROM memory size
 __u16 getEEPROMbytes(struct eeprom* e);
 
-// Read data from EEPROM   
+// Read data from EEPROM
 int eeprom_read_byte(struct eeprom* e, __u16 mem_addr);
 
-// Write data to EEPROM   
+// Write data to EEPROM
 int eeprom_write_byte(struct eeprom *e, __u16 mem_addr, __u8 data);
+```
 
 ---
 
