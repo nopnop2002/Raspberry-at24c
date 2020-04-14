@@ -2,15 +2,15 @@
   I forked from here.
   https://www.richud.com/wiki/Rasberry_Pi_I2C_EEPROM_Program
 
-  24C02  cc -o main main.c 24cXX.c -DC02
-  24C04  cc -o main main.c 24cXX.c -DC04
-  24C08  cc -o main main.c 24cXX.c -DC08
-  24C16  cc -o main main.c 24cXX.c -DC16
-  24C32  cc -o main main.c 24cXX.c -DC32
-  24C64  cc -o main main.c 24cXX.c -DC64
-  24C128 cc -o main main.c 24cXX.c -DC128
-  24C256 cc -o main main.c 24cXX.c -DC256
-  24C512 cc -o main main.c 24cXX.c -DC512
+  24C02  cc -o main main.c at24c.c -DC02
+  24C04  cc -o main main.c at24c.c -DC04
+  24C08  cc -o main main.c at24c.c -DC08
+  24C16  cc -o main main.c at24c.c -DC16
+  24C32  cc -o main main.c at24c.c -DC32
+  24C64  cc -o main main.c at24c.c -DC64
+  24C128 cc -o main main.c at24c.c -DC128
+  24C256 cc -o main main.c at24c.c -DC256
+  24C512 cc -o main main.c at24c.c -DC512
 */
 
 #include <stdio.h>
@@ -23,7 +23,7 @@
 #include <string.h>
 #include <sys/stat.h>
 
-#include "24cXX.h"
+#include "at24c.h"
 
 void dump(char * title, uint8_t *dt, uint32_t n) {
   uint16_t clm = 0;
@@ -132,7 +132,12 @@ int main(int argc, char *argv[])
   //int write_cycle_time = 1;
   struct eeprom e;
   ret = eeprom_open(device, i2c_addr, eeprom_bits, write_cycle_time, &e);
-  printf("eeprom_open ret=%d\n",ret);
+  //printf("eeprom_open ret=%d\n",ret);
+  if (ret != 0) {
+    printf("eeprom_open ret=%d\n",ret);
+    return 1;
+  }
+
 
   // get EEPROM size(byte)
   uint16_t eeprom_bytes = getEEPROMbytes(&e);
@@ -159,16 +164,6 @@ int main(int argc, char *argv[])
     if (ret != 0) printf("eeprom_write_byte ret=%d\n",ret);
   }
 
-  // read first blcok
-  memset(rdata, 0, sizeof(rdata));
-  for(i=0;i<256;i++) {
-    mem_addr = i;
-    rdata[i] = eeprom_read_byte(&e, mem_addr);
-    //ret = eeprom_24c32_read_byte(&e, mem_addr);
-    if (ret != 0) printf("eeprom_read_byte ret=%d\n",ret);
-  }
-  dump("address 0-255", rdata, 256);
-
   char title[64];
   sprintf(title,"address %d-%d",eeprom_bytes-0x100,eeprom_bytes-1);
 
@@ -181,6 +176,16 @@ int main(int argc, char *argv[])
     if (ret != 0) printf("eeprom_read_byte ret=%d\n",ret);
   }
   dump(title, rdata, 256);
+
+  // read first blcok
+  memset(rdata, 0, sizeof(rdata));
+  for(i=0;i<256;i++) {
+    mem_addr = i;
+    rdata[i] = eeprom_read_byte(&e, mem_addr);
+    //ret = eeprom_24c32_read_byte(&e, mem_addr);
+    if (ret != 0) printf("eeprom_read_byte ret=%d\n",ret);
+  }
+  dump("address 0-255", rdata, 256);
 
   eeprom_close(&e);
 

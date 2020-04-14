@@ -16,7 +16,7 @@
 #include <errno.h>
 #include <assert.h>
 #include <string.h>
-#include "24cXX.h"
+#include "at24c.h"
 
 static int i2c_write_1b(struct eeprom *e, __s8 i2c_addr, __u8 buf)
 {

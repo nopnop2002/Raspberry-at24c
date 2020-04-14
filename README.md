@@ -1,4 +1,4 @@
-# Raspberry-24Cxx
+# Raspberry-at24c
 
 Two-Wire Serial EEPROM Access Library for RaspberryPi.   
 
@@ -8,54 +8,54 @@ I forked from [eeprog-0.7.6-tear5.tar.gz](https://www.richud.com/wiki/Rasberry_P
 
 # Build
 for 24C02   
-cc -o main main.c 24cXX.c -DC02
+cc -o main main.c at24c.c -DC02
 
 for 24C04   
-cc -o main main.c 24cXX.c -DC04
+cc -o main main.c at24c.c -DC04
 
 for 24C08   
-cc -o main main.c 24cXX.c -DC08
+cc -o main main.c at24c.c -DC08
 
 for 24C16   
-cc -o main main.c 24cXX.c -DC16
+cc -o main main.c at24c.c -DC16
 
 for 24C32   
-cc -o main main.c 24cXX.c -DC32
+cc -o main main.c at24c.c -DC32
 
 for 24C64   
-cc -o main main.c 24cXX.c -DC64
+cc -o main main.c at24c.c -DC64
 
 for 24C128   
-cc -o main main.c 24cXX.c -DC128
+cc -o main main.c at24c.c -DC128
 
 for 24C256   
-cc -o main main.c 24cXX.c -DC256
+cc -o main main.c at24c.c -DC256
 
 for 24C512   
-cc -o main main.c 24cXX.c -DC512
+cc -o main main.c at24c.c -DC512
 
 sudo ./main [i2c-address]   
 Default i2c-address is 0x50.   
 
 ---
 
-24C04 with Orange Pi   
-![24cxx-orangepi](https://user-images.githubusercontent.com/6020549/59955202-e0a5b300-94c3-11e9-97c5-d980e950d726.jpg)
+- 24C04   
+![24c04](https://user-images.githubusercontent.com/6020549/79177539-08dd1480-7e3e-11ea-82d1-0c2baf508fe8.jpg)
 
-24C16 with Orange Pi   
-![24C16-orangepi](https://user-images.githubusercontent.com/6020549/60673747-71609380-9eb3-11e9-9982-c2bf93e6ac98.jpg)
+- 24C16   
+![24c16](https://user-images.githubusercontent.com/6020549/79177549-0c709b80-7e3e-11ea-9342-39a12b610e21.jpg)
 
-24C32 with Orange Pi   
-![24C32-orangepi](https://user-images.githubusercontent.com/6020549/60674822-f482e900-9eb5-11e9-94c5-999c12bbe407.jpg)
+- 24C32   
+![24c32](https://user-images.githubusercontent.com/6020549/79177555-0f6b8c00-7e3e-11ea-9dc1-ea0ee03f80f1.jpg)
 
-24C64 with Raspberry Pi   
-![24cxx-raspberry](https://user-images.githubusercontent.com/6020549/59955201-e0a5b300-94c3-11e9-96a0-36d694c5dec9.jpg)
+- 24C64   
+![24c64](https://user-images.githubusercontent.com/6020549/79177559-12ff1300-7e3e-11ea-811e-10c509326e99.jpg)
 
-24C128 with Raspberry Pi   
-![24C128-raspberry](https://user-images.githubusercontent.com/6020549/60750005-4ffbc680-9fdd-11e9-8f18-6cc7d55452d1.jpg)
+- 24C128   
+![24c128](https://user-images.githubusercontent.com/6020549/79177565-15fa0380-7e3e-11ea-966e-85721f64bd66.jpg)
 
-24C256 with Raspberry Pi   
-![24C256-raspberry](https://user-images.githubusercontent.com/6020549/60672424-432d8480-9eb0-11e9-8b6b-9c3447d560e2.jpg)
+- 24C256   
+![24c256](https://user-images.githubusercontent.com/6020549/79177569-198d8a80-7e3e-11ea-81fd-baaff732252f.jpg)
 
 ---
 
