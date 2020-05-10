@@ -6,6 +6,22 @@ I forked from [eeprog-0.7.6-tear5.tar.gz](https://www.richud.com/wiki/Rasberry_P
 
 ---
 
+# Memory size
+
+|Device|Number of Bits|Number of 8-bit Bytes|
+|:---|:---|:---|
+|24C02|2K|256|
+|24C04|4K|512|
+|24C08|8K|1024|
+|24C16|16K|2048|
+|24C32|32K|4096|
+|24C64|64K|8192|
+|24C128|128K|16384|
+|24C256|256K|32768|
+|24C512|512K|65536|
+
+---
+
 # Build
 for 24C02   
 cc -o main main.c at24c.c -DC02
