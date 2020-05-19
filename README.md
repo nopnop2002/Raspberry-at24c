@@ -22,6 +22,12 @@ I forked from [eeprog-0.7.6-tear5.tar.gz](https://www.richud.com/wiki/Rasberry_P
 
 ---
 
+# Software requirement
+
+WiringPi Library   
+
+---
+
 # Build
 for 24C02   
 cc -o main main.c at24c.c -DC02
