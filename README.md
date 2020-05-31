@@ -79,6 +79,9 @@ Default i2c-address is 0x50.
 - 24C256   
 ![24c256](https://user-images.githubusercontent.com/6020549/79177569-198d8a80-7e3e-11ea-81fd-baaff732252f.jpg)
 
+- 24C512
+![24c512](https://user-images.githubusercontent.com/6020549/83345333-c9ff1180-a34c-11ea-8c7c-24ed6d2f3777.jpg)
+
 ---
 
 # API
