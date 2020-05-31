@@ -22,7 +22,8 @@ struct eeprom
 	int type;	// eeprom register size(8bit/16bit)
 	int write_cycle_time;
 	int bits;	// eeprom memory size(Kbits)
-	__u16 bytes;	// eeprom memory size(byte)
+	//__u16 bytes;	// eeprom memory size(byte)
+	__u32 bytes;	// eeprom memory size(byte)
 };
 
 /*
@@ -39,7 +40,7 @@ int eeprom_close(struct eeprom *e);
 /*
  * get EEPROM bytes
  */
-__u16 getEEPROMbytes(struct eeprom* e);
+__u32 getEEPROMbytes(struct eeprom* e);
 /*
  * read and returns the eeprom byte at memory address [mem_addr] 
  * Note: eeprom must have been selected by ioctl(fd,I2C_SLAVE,address) 

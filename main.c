@@ -140,7 +140,7 @@ int main(int argc, char *argv[])
 
 
   // get EEPROM size(byte)
-  uint16_t eeprom_bytes = getEEPROMbytes(&e);
+  uint32_t eeprom_bytes = getEEPROMbytes(&e);
   printf("EEPROM chip=24C%.02d bytes=%dByte\n",eeprom_bits,eeprom_bytes);
 
   uint16_t mem_addr;

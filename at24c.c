@@ -42,14 +42,17 @@ static int i2c_write_2b(struct eeprom *e, __s8 i2c_addr, __u8 buf[2])
 	int r;
 	if( ( r = ioctl(e->fd, I2C_SLAVE, i2c_addr)) < 0)
 	{
+		fprintf(stderr, "ioctl r=%d\n", r);
 		fprintf(stderr, "Error i2c_write_2b: %s\n", strerror(errno));
 		return r;
 	}
 
 	// we must simulate a plain I2C byte write with SMBus functions
 	r = i2c_smbus_write_byte_data(e->fd, buf[0], buf[1]);
-	if(r < 0)
+	if(r < 0) {
+		fprintf(stderr, "i2c_smbus_write_word_data r=%d\n", r);
 		fprintf(stderr, "Error i2c_write_2b: %s\n", strerror(errno));
+	}
 	usleep(10);
 	return r;
 }
@@ -60,6 +63,7 @@ static int i2c_write_3b(struct eeprom *e, __s8 i2c_addr, __u8 buf[3])
 	int r;
 	if( ( r = ioctl(e->fd, I2C_SLAVE, i2c_addr)) < 0)
 	{
+		fprintf(stderr, "ioctl r=%d\n", r);
 		fprintf(stderr, "Error i2c_write_3b: %s\n", strerror(errno));
 		return r;
 	}
@@ -67,8 +71,10 @@ static int i2c_write_3b(struct eeprom *e, __s8 i2c_addr, __u8 buf[3])
 	// we must simulate a plain I2C byte write with SMBus functions
 	// the __u16 data field will be byte swapped by the SMBus protocol
 	r = i2c_smbus_write_word_data(e->fd, buf[0], buf[2] << 8 | buf[1]);
-	if(r < 0)
+	if(r < 0) {
+		fprintf(stderr, "i2c_smbus_write_word_data r=%d\n", r);
 		fprintf(stderr, "Error i2c_write_3b: %s\n", strerror(errno));
+	}
 	usleep(10);
 	return r;
 }
@@ -112,7 +118,7 @@ int eeprom_open(char *dev_fqn, int i2c_addr, int bits, int write_cycle_time, str
 
 #if 0
 	// set working device
-	if( ( r = ioctl(fd, I2C_SLAVE, addr)) < 0)
+	if( ( r = ioctl(fd, I2C_SLAVE, i2c_addr)) < 0)
 	{
 		fprintf(stderr, "Error eeprom_open: %s\n", strerror(errno));
 		return -1;
@@ -124,7 +130,7 @@ int eeprom_open(char *dev_fqn, int i2c_addr, int bits, int write_cycle_time, str
 	e->bits = bits;
 	e->type = EEPROM_TYPE_8BIT_ADDR;
 	if (bits > 16) e->type = EEPROM_TYPE_16BIT_ADDR;
-	e->bytes = 128 * bits;
+	e->bytes = (__u32)128 * (__u32)bits;
 	e->write_cycle_time = write_cycle_time;
 	//printf("bits=%d bytes=%d type=%d\n",e->bits, e->bytes, e->type);
 	return 0;
@@ -139,7 +145,7 @@ int eeprom_close(struct eeprom *e)
 	return 0;
 }
 
-__u16 getEEPROMbytes(struct eeprom* e)
+__u32 getEEPROMbytes(struct eeprom* e)
 {
 	return(e->bytes);
 }
